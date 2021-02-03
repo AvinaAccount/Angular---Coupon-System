@@ -4,8 +4,8 @@ export class Coupon {
           title: string
           amount: number
           category: number
-          startDate: Date
-          endDate: Date
+          startDate: string
+          endDate: string
           imagURL: string
 
           constructor(id: number, 
@@ -13,7 +13,7 @@ export class Coupon {
                     title: string, 
                     amount: number, 
                     category: number, 
-                    startDate: Date, 
-                    endDate: Date, 
+                    startDate: number, 
+                    endDate: number, 
                     imagURL: string) { }
 }
