@@ -1,3 +1,4 @@
+import { MyCouponsComponent } from './customer/my-coupons/my-coupons.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CompanyComponent } from './company/company.component';
 import { AdminComponent } from './admin/admin.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'login/admin/admin-main', component: AdminComponent },
   { path: 'login/company/company-main', component: CompanyComponent },
   { path: 'login/customer/customer-main', component: CustomerComponent },
+  { path: 'login/customer/customer-main/coupons', component: MyCouponsComponent },
   
 
   // TODO: Fix the routing by synchronised with the DB.

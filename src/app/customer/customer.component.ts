@@ -1,6 +1,8 @@
+import { MyCouponsComponent } from './my-coupons/my-coupons.component';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-customer',
@@ -9,13 +11,17 @@ import { Location } from '@angular/common';
 })
 export class CustomerComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  constructor(private location: Location, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   backClicked() {
     this.location.back()
+  }
+
+  onMyCoupons() {
+    this.router.navigate(['coupons'], { relativeTo: this.route })
   }
 
 }
