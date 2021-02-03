@@ -11,6 +11,7 @@ import { CustomerProfileComponent } from './customer/customer-profile/customer-p
 import { CouponsExpiredComponent } from './customer/coupons-expired/coupons-expired.component';
 import { HomeComponent } from './home/home.component';
 import { LoginDetailsComponent } from './home/login-details/login-details.component';
+import { CouponItemComponent } from './customer/my-coupons/coupon-item/coupon-item.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +24,12 @@ import { LoginDetailsComponent } from './home/login-details/login-details.compon
     CouponsExpiredComponent,
     HomeComponent,
     LoginDetailsComponent,
+    CouponItemComponent,
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

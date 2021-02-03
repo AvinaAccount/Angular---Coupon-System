@@ -1,8 +1,6 @@
-import { MyCouponsComponent } from './my-coupons/my-coupons.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-customer',
@@ -20,7 +18,7 @@ export class CustomerComponent implements OnInit {
     this.location.back()
   }
 
-  onMyCoupons() {
+  onClickMyCoupons() {
     this.router.navigate(['coupons'], { relativeTo: this.route })
   }
 

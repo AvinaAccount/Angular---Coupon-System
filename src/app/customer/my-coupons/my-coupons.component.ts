@@ -1,5 +1,4 @@
 import { Coupon } from './../../models/coupon.model';
-import { CustomerService } from './../customer.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,10 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class MyCouponsComponent implements OnInit {
   coupons: Coupon[]
 
-  constructor(private customerService: CustomerService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.coupons = this.customerService.getCoupons()
   }
 
 }
