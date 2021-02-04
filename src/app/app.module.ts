@@ -11,6 +11,8 @@ import { CustomerProfileComponent } from './customer/customer-profile/customer-p
 import { CouponsExpiredComponent } from './customer/coupons-expired/coupons-expired.component';
 import { HomeComponent } from './home/home.component';
 import { LoginDetailsComponent } from './home/login-details/login-details.component';
+import { FormsModule } from '@angular/forms';
+import { MyCouponsComponent } from './customer/my-coupons/my-coupons.component';
 import { CouponItemComponent } from './customer/my-coupons/coupon-item/coupon-item.component';
 
 @NgModule({
@@ -24,14 +26,18 @@ import { CouponItemComponent } from './customer/my-coupons/coupon-item/coupon-it
     CouponsExpiredComponent,
     HomeComponent,
     LoginDetailsComponent,
+    MyCouponsComponent,
     CouponItemComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+  
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

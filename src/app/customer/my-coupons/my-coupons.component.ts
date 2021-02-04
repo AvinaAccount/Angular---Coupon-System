@@ -1,4 +1,3 @@
-import { Coupon } from './../../models/coupon.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-coupons.component.css']
 })
 export class MyCouponsComponent implements OnInit {
-  coupons: Coupon[]
 
   constructor() { }
 
