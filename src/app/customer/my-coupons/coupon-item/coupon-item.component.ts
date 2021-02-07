@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./coupon-item.component.css']
 })
 export class CouponItemComponent implements OnInit {
-  @Input() coupon: Coupon
+ coupon = ['Title',7]
  
 
   constructor() { }

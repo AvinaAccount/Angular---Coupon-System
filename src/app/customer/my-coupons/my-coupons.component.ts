@@ -10,13 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyCouponsComponent implements OnInit {
   coupons: Coupon[]
-
   
-
-  constructor(private customerService: CustomerService) { }
+  
+  constructor(private couponService: CustomerService) { }
 
   ngOnInit(): void {
-    // this.coupons = this.couponService.getCoupons()
+    this.coupons = this.couponService.getCoupons()
   }
 
 }
