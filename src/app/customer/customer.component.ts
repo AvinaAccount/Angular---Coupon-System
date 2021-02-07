@@ -1,3 +1,4 @@
+import { CustomerService } from './customer.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -5,11 +6,15 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.css']
+  styleUrls: ['./customer.component.css'],
+  providers: [CustomerService]
 })
 export class CustomerComponent implements OnInit {
 
-  constructor(private location: Location, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private location: Location,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
