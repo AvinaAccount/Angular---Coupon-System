@@ -1,3 +1,15 @@
-<h4>{{coupon}}</h4>
-<p>{{coupon}}</p>
-Hi im item!
+<div class="card"
+     style="width: 18rem;">
+     <img src={{coupon.imagURL}}
+          class="card-img-top"
+          style="padding-top: 20px;"
+          alt="...">
+     <div class="card-body">
+          <h5 class="card-title">{{coupon.title}}</h5>
+          <p class="card-text">{{coupon.amount}}</p>
+          <p class="card-text">{{coupon.category}}</p>
+          <p class="card-text">{{coupon.companyId}}</p>
+          <button type="button"
+                  class="btn btn-primary">Details</button>
+     </div>
+</div>

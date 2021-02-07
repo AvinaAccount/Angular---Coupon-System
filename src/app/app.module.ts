@@ -14,6 +14,7 @@ import { LoginDetailsComponent } from './home/login-details/login-details.compon
 import { FormsModule } from '@angular/forms';
 import { MyCouponsComponent } from './customer/my-coupons/my-coupons.component';
 import { CouponItemComponent } from './customer/my-coupons/coupon-item/coupon-item.component';
+import { CouponPageComponent } from './customer/my-coupons/coupon-page/coupon-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CouponItemComponent } from './customer/my-coupons/coupon-item/coupon-it
     LoginDetailsComponent,
     MyCouponsComponent,
     CouponItemComponent,
+    CouponPageComponent,
     
   ],
   imports: [
