@@ -1,6 +1,6 @@
 
 export class Coupon {
-                    companyId: number
+          companyId: number
           title: string
           amount: number
           category: number
