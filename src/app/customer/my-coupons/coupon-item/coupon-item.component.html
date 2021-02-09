@@ -1,3 +1,19 @@
-<h4>{{coupon.title}}</h4>
-<p>{{coupon.amount}}</p>
-Hi im item!
+<div class="card"
+     style="width: 18rem;"
+     [routerLink]=[id]
+     routerLinkActive="active">
+     <img src={{coupon.imagURL}}
+          class="card-img-top"
+          style="padding-top: 20px;"
+          alt="...">
+     <div class="card-body">
+          <h5 class="card-title">{{coupon.title}}</h5>
+          <p class="card-text">{{coupon.amount}}</p>
+          <p class="card-text">{{coupon.category}}</p>
+          <p class="card-text">{{coupon.companyId}}</p>
+          <button type="button"
+                  [routerLink]=[id]
+                  routerLinkActive="active"
+                  class="btn btn-primary">Details</button>
+     </div>
+</div>

@@ -1,21 +1,28 @@
+
 export class Coupon {
-          // id: number
-          // companyId: number
+          companyId: number
           title: string
           amount: number
-          // category: number
+          category: number
+          imagURL: string
           // startDate: string
           // endDate: string
-          // imagURL: string
 
           constructor(
-                    // id: number, 
-                    // companyId: number, 
-                    title: string, 
-                    amount: number, 
-                    // category: number, 
-                    // startDate: number, 
-                    // endDate: number, 
-                    // imagURL: string
-                    ) { }
+                    companyId: number,
+                    title: string,
+                    amount: number,
+                    category: number,
+                    imagURL: string
+                    // startDate: number,
+                    // endDate: number,
+          ) {
+                    this.companyId = companyId
+                    this.title = title
+                    this.amount = amount
+                    this.category = category
+                    this.imagURL = imagURL
+
+
+          }
 }

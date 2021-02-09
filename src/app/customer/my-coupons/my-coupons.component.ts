@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { CustomerService } from './../customer.service';
 import { Coupon } from './../../models/coupon.model';
 import { Component, OnInit } from '@angular/core';
@@ -6,17 +7,19 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-my-coupons',
   templateUrl: './my-coupons.component.html',
   styleUrls: ['./my-coupons.component.css'],
-  providers:[CustomerService]
+  providers: [CustomerService]
 })
 export class MyCouponsComponent implements OnInit {
   coupons: Coupon[]
 
-  
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private couponService: CustomerService, private location: Location) { }
 
   ngOnInit(): void {
-    // this.coupons = this.couponService.getCoupons()
+    this.coupons = this.couponService.getCoupons()
   }
 
+  backClicked() {
+    this.location.back()
+  }
 }

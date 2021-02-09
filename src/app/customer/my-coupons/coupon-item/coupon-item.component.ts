@@ -7,7 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./coupon-item.component.css']
 })
 export class CouponItemComponent implements OnInit {
-  @Input() coupon: Coupon
+ @Input() coupon : Coupon
+ @Input() id : number
  
 
   constructor() { }

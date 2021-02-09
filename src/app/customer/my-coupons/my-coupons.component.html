@@ -1,8 +1,12 @@
-<app-coupon-item></app-coupon-item>
-<div class="col-12">
-          <a *ngFor="let c of coupons">
-                    {{c.title}}
-                    {{c.amount}}
-                    dsfgsdg
-          </a>
+<button type="button"
+        class="fixed-top btn btn-outline-info"
+        (click)="backClicked()">Back</button>
+
+<div class="container">
+          <div class="row">
+                    <app-coupon-item *ngFor="let c of coupons; let i = index"
+                                     [coupon]=c
+                                     [id]=i
+                                     style="padding: 20px;"></app-coupon-item>
+          </div>
 </div>
