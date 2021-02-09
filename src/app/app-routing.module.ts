@@ -1,3 +1,6 @@
+import { ExpiredCouponPageComponent } from './customer/coupons-expired/expired-coupon-page/expired-coupon-page.component';
+import { CouponsExpiredComponent } from './customer/coupons-expired/coupons-expired.component';
+import { CustomerShopComponent } from './customer/customer-shop/customer-shop.component';
 import { CouponPageComponent } from './customer/my-coupons/coupon-page/coupon-page.component';
 import { MyCouponsComponent } from './customer/my-coupons/my-coupons.component';
 import { CustomerComponent } from './customer/customer.component';
@@ -9,6 +12,7 @@ import { LoginDetailsComponent } from './home/login-details/login-details.compon
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { ShopCouponPageComponent } from './customer/customer-shop/shop-coupon-page/shop-coupon-page.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -19,8 +23,12 @@ const routes: Routes = [
   { path: 'login/admin/admin-main', component: AdminComponent },
   { path: 'login/company/company-main', component: CompanyComponent },
   { path: 'login/customer/customer-main', component: CustomerComponent },
-  {path: 'login/customer/customer-main/coupons', component: MyCouponsComponent},
-  {path: 'login/customer/customer-main/coupons/:id', component: CouponPageComponent},
+  { path: 'login/customer/customer-main/coupons', component: MyCouponsComponent },
+  { path: 'login/customer/customer-main/coupons/:id', component: CouponPageComponent },
+  { path: 'login/customer/customer-main/shop', component: CustomerShopComponent },
+  { path: 'login/customer/customer-main/shop/:id', component: ShopCouponPageComponent },
+  { path: 'login/customer/customer-main/expired', component: CouponsExpiredComponent },
+  { path: 'login/customer/customer-main/expired/:id', component: ExpiredCouponPageComponent },
 
 
 

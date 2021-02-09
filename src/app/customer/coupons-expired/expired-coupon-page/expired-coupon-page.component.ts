@@ -1,17 +1,16 @@
+import { CustomerService } from './../../customer.service';
 import { Location } from '@angular/common';
-import { ActivatedRoute, Params } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Coupon } from 'src/app/models/coupon.model';
-import { CustomerService } from '../../customer.service';
 
 @Component({
-  selector: 'app-coupon-page',
-  templateUrl: './coupon-page.component.html',
-  styleUrls: ['./coupon-page.component.css'],
-  providers: [CustomerService]
-
+  selector: 'app-expired-coupon-page',
+  templateUrl: './expired-coupon-page.component.html',
+  styleUrls: ['./expired-coupon-page.component.css'],
+  providers:[CustomerService]
 })
-export class CouponPageComponent implements OnInit {
+export class ExpiredCouponPageComponent implements OnInit {
 
   coupon: Coupon
   @Input() selectedCoupon: number
@@ -28,4 +27,5 @@ export class CouponPageComponent implements OnInit {
   backClicked() {
     this.location.back()
   }
+
 }

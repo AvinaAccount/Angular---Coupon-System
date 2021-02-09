@@ -1,5 +1,5 @@
-import { Coupon } from './../../../models/coupon.model';
 import { Component, Input, OnInit } from '@angular/core';
+import { Coupon } from 'src/app/models/coupon.model';
 
 @Component({
   selector: 'app-coupon-item',

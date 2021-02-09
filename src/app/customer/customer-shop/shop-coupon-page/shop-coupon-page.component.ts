@@ -1,17 +1,16 @@
 import { Location } from '@angular/common';
-import { ActivatedRoute, Params } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Coupon } from 'src/app/models/coupon.model';
 import { CustomerService } from '../../customer.service';
 
 @Component({
-  selector: 'app-coupon-page',
-  templateUrl: './coupon-page.component.html',
-  styleUrls: ['./coupon-page.component.css'],
-  providers: [CustomerService]
-
+  selector: 'app-shop-coupon-page',
+  templateUrl: './shop-coupon-page.component.html',
+  styleUrls: ['./shop-coupon-page.component.css'],
+  providers:[CustomerService]
 })
-export class CouponPageComponent implements OnInit {
+export class ShopCouponPageComponent implements OnInit {
 
   coupon: Coupon
   @Input() selectedCoupon: number

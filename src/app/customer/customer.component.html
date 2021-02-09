@@ -13,7 +13,9 @@
                 <div class="col-3">
                         <button style="width: 100%; height: 100%;height: 200px; width: 250px;"
                                 type="button"
-                                class="btn btn-primary">Coupons<h6>GET NEW COUPONS TODAY!</h6></button>
+                                class="btn btn-primary"
+                                [routerLink]="['shop']"
+                                routerLinkActive="active-link">Coupons<h6>GET NEW COUPONS TODAY!</h6></button>
 
                 </div>
         </div>
@@ -28,7 +30,9 @@
                 <div class="col-3">
                         <button style="width: 100%; height: 100%;height: 200px; width: 250px;"
                                 type="button"
-                                class="btn btn-primary">About to get expired</button>
+                                class="btn btn-primary"
+                                [routerLink]="['expired']"
+                                routerLinkActive="active-link">About to get expired</button>
                 </div>
         </div>
 </div>

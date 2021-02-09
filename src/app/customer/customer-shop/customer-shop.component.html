@@ -1,1 +1,14 @@
-<p>customer-shop works!</p>
+<button type="button"
+        class="fixed-top btn btn-outline-info"
+        (click)="backClicked()">Back</button>
+
+<div class="container">
+          <div class="row">
+                    <app-shop-coupon-item *ngFor="let c of coupons;let i = index"
+                                   [coupon]=c
+                                   [id]=i
+                                   style="padding: 20px;"
+                                   [routerLink]=[id]
+                                   routerLinkActive="active">c</app-shop-coupon-item>
+          </div>
+</div>
