@@ -1,13 +1,12 @@
-import { CustomerService } from './customer.service';
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css'],
-  providers: [CustomerService]
+
 })
 export class CustomerComponent implements OnInit {
 
@@ -26,5 +25,8 @@ export class CustomerComponent implements OnInit {
   onClickMyCoupons() {
     this.router.navigate(['coupons'], { relativeTo: this.route })
   }
+
+
+
 
 }

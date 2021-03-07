@@ -1,0 +1,13 @@
+<button type="button"
+        class="fixed-top btn btn-outline-info"
+        (click)="backClicked()">Back</button>
+<br><br>
+​
+<div class="row">
+    <div class="col-12">
+        <app-company-coupon-item *ngFor="let c of coupons; let i = index"
+                                 [coupon]="c"
+                                 [id]="i"></app-company-coupon-item>
+    </div>
+</div>
+<hr>

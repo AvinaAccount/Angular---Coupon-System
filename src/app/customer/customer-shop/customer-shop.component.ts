@@ -7,7 +7,6 @@ import { Coupon } from 'src/app/models/coupon.model';
   selector: 'app-customer-shop',
   templateUrl: './customer-shop.component.html',
   styleUrls: ['./customer-shop.component.css'],
-  providers: [CustomerService]
 })
 export class CustomerShopComponent implements OnInit {
   coupons: Coupon[]

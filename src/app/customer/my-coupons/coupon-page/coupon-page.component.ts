@@ -8,8 +8,6 @@ import { CustomerService } from '../../customer.service';
   selector: 'app-coupon-page',
   templateUrl: './coupon-page.component.html',
   styleUrls: ['./coupon-page.component.css'],
-  providers: [CustomerService]
-
 })
 export class CouponPageComponent implements OnInit {
 

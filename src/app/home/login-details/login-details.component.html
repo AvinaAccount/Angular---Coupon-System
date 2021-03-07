@@ -1,25 +1,28 @@
 <div class="wrapper fadeInDown">
-          <div id="formContent">
-                 <!-- Login Form -->
-                 <form>
-                        <input type="text"
-                               id="login"
-                               class="fadeIn second"
-                               name="login"
-                               placeholder="Email">
-                        <input type="text"
-                               id="password"
-                               class="fadeIn third"
-                               name="login"
-                               placeholder="password">
-                        <input type="button"
-                               class="fadeIn fourth"
-                               value="Log In"
-                               (click)='onClickLogin()'>
-                 </form>
-          </div>
-   
-          <button type="button"
-                  class="fixed-top btn btn-outline-info"
-                  (click)="backClicked()">Back</button>
-   </div>
+       <div id="formContent">
+              <!-- Login Form -->
+              <form (ngSubmit) = 'onSubmit()' #f = 'ngForm'>
+                     <input type="text"
+                            id="email"
+                            ngModel
+                            class="fadeIn second"
+                            name="email"
+                            placeholder="Email">
+                     <input type="text"
+                            id="password"
+                            ngModel
+                            class="fadeIn third"
+                            name="password"
+                            placeholder="password">
+                     <br><br>
+                     <button type="submit"
+                             class="btn btn-primary"
+                             >Login</button>
+                     <br><br>
+              </form>
+       </div>
+
+       <button type="button"
+               class="fixed-top btn btn-outline-info"
+               (click)="backClicked()">Back</button>
+</div>
