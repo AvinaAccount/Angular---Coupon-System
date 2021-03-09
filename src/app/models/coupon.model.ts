@@ -1,28 +1,35 @@
 
 export class Coupon {
-          companyId: number
-          title: string
+   
           amount: number
           category: number
-          imagURL: string
-          // startDate: string
-          // endDate: string
+          endDate: string
+          id: number
+          imageURL: string
+          price: number
+          startDate: string
+          title: string
 
+         
           constructor(
-                    companyId: number,
+                    id: number,
+                    // companyId: number,
                     title: string,
-                    amount: number,
+                    startDate: string,
+                    endDate: string,
                     category: number,
-                    imagURL: string
-                    // startDate: number,
-                    // endDate: number,
+                    amount: number,
+                    price: number,
+                    imageURL: string
           ) {
-                    this.companyId = companyId
+                    this.id = id
+                    // this.companyId = companyId
                     this.title = title
-                    this.amount = amount
+                    this.startDate = startDate
+                    this.endDate = endDate
                     this.category = category
-                    this.imagURL = imagURL
-
-
+                    this.amount = amount
+                    this.price = price
+                    this.imageURL = imageURL
           }
 }
