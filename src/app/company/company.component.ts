@@ -1,5 +1,3 @@
-import { CompanyService } from 'src/app/company/company.service';
-import { StorageService } from './../common/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,12 +13,10 @@ export class CompanyComponent implements OnInit {
     private location: Location,
     private route: ActivatedRoute,
     private router: Router,
-    private CompanyService: CompanyService) { }
+    ) { }
 
   ngOnInit(): void {
-    this.CompanyService.fetchAllCoupons()
   }
-
 
   backClicked() {
     this.location.back()
@@ -29,5 +25,4 @@ export class CompanyComponent implements OnInit {
   onClickMyCoupons() {
     this.router.navigate(['company-coupons'], { relativeTo: this.route })
   }
-
 }

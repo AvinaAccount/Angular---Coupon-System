@@ -2,8 +2,8 @@ import { Location } from '@angular/common';
 import { CompanyService } from './../../company.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Coupon } from 'src/app/models/coupon.model';
-import { CustomerService } from 'src/app/customer/customer.service';
 import { ActivatedRoute, Params } from '@angular/router';
+
 
 @Component({
   selector: 'app-company-coupons-page',
@@ -12,19 +12,34 @@ import { ActivatedRoute, Params } from '@angular/router';
   providers: [CompanyService]
 })
 export class CompanyCouponsPageComponent implements OnInit {
-
-  coupon: Coupon
-  @Input() selectedCoupon: number
+  coupons: Coupon[]
+  @Input() coupon: Coupon
+  selectedCoupon: string
 
   constructor(
     private location: Location,
     private companyService: CompanyService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+  ) {
+
+  }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => { this.selectedCoupon = +params['id'] })
-    this.coupon = this.companyService.getCouponById(this.selectedCoupon)
+    this.route.params.subscribe((params: Params) => { this.selectedCoupon = params['id'] })
+    this.companyService.fetchCouponById(this.selectedCoupon)
+    this.companyService.selectedCoupon.subscribe(
+      (coupon: Coupon) => { this.coupon = coupon })   
+   
+    console.log(this.coupons);
   }
+
+  
+
+  onclickDelete() {
+    this.companyService.removeCompanyCouponById(this.coupon.id.toString())
+    this.backClicked()
+  }
+
   backClicked() {
     this.location.back()
   }

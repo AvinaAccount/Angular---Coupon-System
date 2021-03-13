@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { CompanyService } from '../company.service';
 
 @Component({
@@ -8,10 +9,15 @@ import { CompanyService } from '../company.service';
   providers: [CompanyService]
 })
 export class NewCouponComponent implements OnInit {
-
+  @ViewChild('f') couponForm: NgForm
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    console.log(this.couponForm);
+
   }
 
 }

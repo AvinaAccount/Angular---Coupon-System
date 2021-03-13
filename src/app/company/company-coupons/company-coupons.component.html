@@ -3,10 +3,12 @@
         (click)="backClicked()">Back</button>
 
 <div class="container">
-          <div class="row">
-                    <app-company-coupons-item *ngFor="let c of coupons; let i = index"
-                                             [coupon]=c
-                                             [id]=i
-                                             style="padding: 20px;"></app-company-coupons-item>
-          </div>
+        <div class="row">
+                <app-company-coupons-item *ngFor="let c of coupons; let i = index"
+                                          [coupon]=c
+                                          [id]=c.id
+                                          style="padding: 20px;"
+                                          ></app-company-coupons-item>
+
+        </div>
 </div>

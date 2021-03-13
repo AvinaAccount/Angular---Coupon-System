@@ -1,5 +1,4 @@
 import { Coupon } from './../models/coupon.model';
-import { Customer } from './../models/customer.model';
 import { Token } from './../models/token.model';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
@@ -8,10 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class StorageService {
   token: string
-
-  subscribe(arg0: (coupons: any) => void) {
-    throw new Error('Method not implemented.');
-  }
+  coupon: Coupon
 
   constructor(private http: HttpClient) { }
 
@@ -27,12 +23,24 @@ export class StorageService {
   }
 
 
-  /* Not Done yet! */
-  getCompanyCoupons():Observable<Coupon[]>{
+  getCompanyCoupons(): Observable<Coupon[]> {
     const params = new HttpParams()
-      .set("token", this.token);
+      .set("token", this.token)
     return this.http.get<Coupon[]>('http://localhost:8080/api/company/get_company_coupons', { params })
   }
 
+  fetchCouponById(couponId: string): Observable<Coupon> {
+    const params = new HttpParams()
+      .set('token', this.token)
+      .set('couponId', couponId)
+    return this.http.get<Coupon>('http://localhost:8080/api/company/get_coupon', { params })
+  }
 
+  deleteCompanyCoupon(couponId: string) {
+    const params = new HttpParams()
+      .set('token', this.token)
+      .set('couponId', couponId)
+    return this.http.post('http://localhost:8080/api/company/remove_coupon', params,{responseType: "text"})
+
+  }
 }

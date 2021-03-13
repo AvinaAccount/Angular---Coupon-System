@@ -49,12 +49,6 @@ const routes: Routes = [
     ]
   },
 
-
-
-  // TODO: Fix the routing by synchronised with the DB.
-
-  // Doesn't work with children routing.<--------------------| Check Y!
-
 ];
 
 @NgModule({
