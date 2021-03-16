@@ -26,6 +26,9 @@ export class CustomerComponent implements OnInit {
     this.router.navigate(['coupons'], { relativeTo: this.route })
   }
 
+  onClickLoguot(){
+    this.router.navigate(['login'])
+  }
 
 
 

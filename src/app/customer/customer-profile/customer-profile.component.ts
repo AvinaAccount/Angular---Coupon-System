@@ -1,6 +1,8 @@
+import { NgForm } from '@angular/forms';
+import { CustomerService } from 'src/app/customer/customer.service';
 import { Location } from '@angular/common';
 import { Customer } from './../../models/customer.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-customer-profile',
@@ -8,15 +10,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-profile.component.css']
 })
 export class CustomerProfileComponent implements OnInit {
-  customer: Customer
-  constructor(private location: Location) {
-    this.customer = new Customer(1, 'Avinadav', 'Hazan', 'Avinahazan@gmail.com', '1234')
+  customer: Customer = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  }
+  @ViewChild('f') customerForm: NgForm
+  editMode = false
+
+
+  constructor(private location: Location, private customerService: CustomerService) {
+
   }
 
   ngOnInit(): void {
+    this.customerService.getCustomerDetails()
+    this.customerService.customerEmiter.subscribe((customer: Customer) => {
+      this.customer = customer
+    })
   }
 
+  onClick() {
+    this.customerService.updateCustomerDetails(this.customer)
+    this.customerService.customerEmiter.subscribe((customer: Customer) => console.log(customer)
+    )
+
+    this.editMode = false
+  }
+
+
+
+  editClicked() {
+    this.editMode = true
+  }
   backClicked() {
+    console.log(this.customer);
     this.location.back()
   }
 

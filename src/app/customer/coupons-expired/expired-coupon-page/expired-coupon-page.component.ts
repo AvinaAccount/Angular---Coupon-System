@@ -22,8 +22,7 @@ export class ExpiredCouponPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => { this.selectedCoupon = +params['id'] })
-    this.coupon = this.customerService.getCouponById(this.selectedCoupon)
-  }
+    }
   backClicked() {
     this.location.back()
   }

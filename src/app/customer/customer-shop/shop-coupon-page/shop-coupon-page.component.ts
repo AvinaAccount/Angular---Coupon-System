@@ -8,10 +8,20 @@ import { CustomerService } from '../../customer.service';
   selector: 'app-shop-coupon-page',
   templateUrl: './shop-coupon-page.component.html',
   styleUrls: ['./shop-coupon-page.component.css'],
-  })
+})
 export class ShopCouponPageComponent implements OnInit {
 
-  coupon: Coupon
+  coupon: Coupon = {
+    id: 0,
+    amount: 0,
+    title: '',
+    startDate: '',
+    endDate: '',
+    category: 0,
+    price: 0,
+    imageURL: '',
+  }
+  coupons: Coupon[]
   @Input() selectedCoupon: number
 
   constructor(
@@ -21,8 +31,29 @@ export class ShopCouponPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => { this.selectedCoupon = +params['id'] })
-    this.coupon = this.customerService.getCouponById(this.selectedCoupon)
+    this.customerService.getAllCoupons()
+    this.customerService.couponsEmiter.subscribe((coupons: Coupon[]) => {
+      this.coupons = coupons
+      this.onSelectCoupon(this.selectedCoupon)
+    })
   }
+
+  onSelectCoupon(id: number) {
+    for (let i = 0; i < this.coupons.length - 1; i++) {
+      if (this.coupons[i].id === id) {
+        this.coupon = this.coupons[i]
+        break
+      }
+    }
+    console.log(this.coupon);
+  }
+
+  onClickPurchase() {
+    this.customerService.purchaseCoupon(this.selectedCoupon)
+    this.customerService.couponEmiter.subscribe(coupon => this.coupon = coupon)
+    this.location.back()
+  }
+
   backClicked() {
     this.location.back()
   }

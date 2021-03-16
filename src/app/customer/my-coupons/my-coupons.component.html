@@ -6,7 +6,7 @@
           <div class="row">
                     <app-coupon-item *ngFor="let c of coupons; let i = index"
                                      [coupon]=c
-                                     [id]=i
+                                     [id]=c.id
                                      style="padding: 20px;"></app-coupon-item>
           </div>
 </div>

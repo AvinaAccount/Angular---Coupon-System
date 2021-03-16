@@ -1,3 +1,4 @@
+import { Company } from './../models/company.model';
 import { Coupon } from 'src/app/models/coupon.model';
 import { StorageService } from './../common/storage.service';
 import { EventEmitter, Injectable, Output } from "@angular/core"
@@ -12,13 +13,15 @@ export class CompanyService {
   companyToken: string
   message: string
   messageEmiter = new EventEmitter<string>()
+  company: Company
+  companyEmiter = new EventEmitter<Company>()
 
 
   constructor(private storagService: StorageService,) {
 
   }
 
-  fetchAllCoupons() {
+  fetchCompanyCoupons() {
     this.storagService.getCompanyCoupons()
       .subscribe(coupons => {
         this.coupons = coupons
@@ -60,5 +63,20 @@ export class CompanyService {
 
   getDeleteCouponMessage() {
     this.messageEmiter.emit(this.message)
+  }
+
+  createCoupon(coupon: Coupon) {
+    this.storagService.createNewCoupon(coupon).subscribe(coupon => console.log(coupon))
+  }
+
+  getCompanyDetails() {
+    this.storagService.getCompanyDetails().subscribe(company => {
+      this.company = company
+      this.getCompany()
+    })
+  }
+
+  getCompany() {
+    this.companyEmiter.emit(this.company)
   }
 }

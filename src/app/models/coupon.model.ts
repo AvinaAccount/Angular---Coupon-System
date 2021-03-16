@@ -1,6 +1,6 @@
 
 export class Coupon {
-   
+
           amount: number
           category: number
           endDate: string
@@ -10,20 +10,18 @@ export class Coupon {
           startDate: string
           title: string
 
-         
+
           constructor(
                     id: number,
-                    // companyId: number,
                     title: string,
                     startDate: string,
                     endDate: string,
                     category: number,
                     amount: number,
                     price: number,
-                    imageURL: string
+                    imageURL: string,
           ) {
                     this.id = id
-                    // this.companyId = companyId
                     this.title = title
                     this.startDate = startDate
                     this.endDate = endDate

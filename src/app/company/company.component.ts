@@ -25,4 +25,8 @@ export class CompanyComponent implements OnInit {
   onClickMyCoupons() {
     this.router.navigate(['company-coupons'], { relativeTo: this.route })
   }
+
+  onClickLoguot(){
+    this.router.navigate(['login'])
+  }
 }

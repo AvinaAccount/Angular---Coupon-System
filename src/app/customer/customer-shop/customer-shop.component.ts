@@ -12,10 +12,11 @@ export class CustomerShopComponent implements OnInit {
   coupons: Coupon[]
   id: number
 
-  constructor(private customerService: CustomerService,private location:Location) { }
+  constructor(private customerService: CustomerService, private location: Location) { }
 
   ngOnInit(): void {
-    this.coupons = this.customerService.getCoupons()
+    this.customerService.getAllCoupons()
+    this.customerService.couponsEmiter.subscribe((coupons: Coupon[]) => this.coupons = coupons)
   }
 
   backClicked() {

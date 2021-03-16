@@ -3,31 +3,42 @@
         (click)="backClicked()">Back</button>
 
 <br><br>
-<div class="container">
-    <form>
+<button type="button"
+        class=" btn btn-primary"
+        (click)="editClicked()">Edit</button>
+<div class="container"
+     *ngIf=editMode>
+    <form (ngSubmit)='onClick()'
+          #f='ngForm'>
         <div class="row">
             <div class="col-12">
-                <label for="title">First name : </label>
-                <input type="text"
-                       id="title"
-                       name="title">
+                <div class="form-group">
+                    <label for="title">First name : </label>
+                    <input type="text"
+                           id="title"
+                           [(ngModel)]='customer.firstName'
+                           name="title">
+                </div>
             </div>
-            <div class="col-12">
+            <div class="form-group col-12">
                 <label for="amount">Last name : </label>
                 <input type="text"
                        id="amount"
+                       [(ngModel)]='customer.lastName'
                        name="amount">
             </div>
-            <div class="col-12">
+            <div class="form-group col-12">
                 <label for="category">Email : </label>
                 <input type="text"
                        id="category"
+                       [(ngModel)]='customer.email'
                        name="category">
             </div>
-            <div class="col-12">
+            <div class="form-group col-12">
                 <label for="imageURL">Password : </label>
                 <input type="text"
                        id="imageURL"
+                       [(ngModel)]='customer.password'
                        name="imageURL">
             </div>
         </div>

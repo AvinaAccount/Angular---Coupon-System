@@ -29,7 +29,7 @@ export class CompanyCouponsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.companyService.fetchAllCoupons()
+    this.companyService.fetchCompanyCoupons()
     this.companyService.couponsList.subscribe((coupons: Coupon[]) => {
       this.coupons = coupons
       this.sortCoupons(coupons)

@@ -6,7 +6,7 @@
           <div class="row">
                     <app-shop-coupon-item *ngFor="let c of coupons;let i = index"
                                    [coupon]=c
-                                   [id]=i
+                                   [id]=c.id
                                    style="padding: 20px;"
                                    [routerLink]=[id]
                                    routerLinkActive="active">c</app-shop-coupon-item>

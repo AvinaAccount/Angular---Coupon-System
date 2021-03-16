@@ -1,54 +1,54 @@
 <div class="container"
      style="position: absolute; left: 30%; top: 25%;">
-          <div class="row">
-                    <div class="col-3">
-                              <button style="width: 100%; height: 100%; height: 200px; width: 250px;"
-                                      type="button"
-                                      class="btn btn-primary"
-                                      (click)=onClickMyCoupons()>Coupons</button>
-                    </div>
+        <div class="row">
+                <div class="col-3">
+                        <button style="width: 100%; height: 100%; height: 200px; width: 250px;"
+                                type="button"
+                                class="btn btn-primary"
+                                (click)=onClickMyCoupons()>Coupons</button>
+                </div>
 
-                    <div class="col-1"></div>
-                    <div class="col-3">
-                              <button style="width: 100%; height: 100%;height: 200px; width: 250px;"
-                                      type="button"
-                                      class="btn btn-primary"
-                                      [routerLink]="['new-coupon']"
-                                      routerLinkActive="active-link">New Coupon</button>
+                <div class="col-1"></div>
+                <div class="col-3">
+                        <button style="width: 100%; height: 100%;height: 200px; width: 250px;"
+                                type="button"
+                                class="btn btn-primary"
+                                [routerLink]="['new-coupon']"
+                                routerLinkActive="active-link">New Coupon</button>
 
-                    </div>
-          </div>
-          <br><br>
-          <div class="row">
-                    <div class="col-3">
+                </div>
+        </div>
+        <br><br>
+        <div class="row">
+                <div class="col-3">
+                        <button style="width: 100%; height: 100%;height: 200px; width: 250px;"
+                                type="button"
+                                class="btn btn-primary"
+                                [routerLink]="['company-profile']"
+                                routerLinkActive="active-link">Company profile</button>
+                </div>
+                <div class="col-1"></div>
+
+                <!-- Optional: -->
+                <!--  <div class="col-3">
                               <button style="width: 100%; height: 100%;height: 200px; width: 250px;"
                                       type="button"
                                       class="btn btn-primary"
-                                      [routerLink]="['company-profile']"
-                                      routerLinkActive="active-link">Company profile</button>
-                    </div>
-                    <div class="col-1"></div>
-                   
-                    <!-- Optional: -->
-                    <!--  <div class="col-3">
-                              <button style="width: 100%; height: 100%;height: 200px; width: 250px;"
-                                      type="button"
-                                      class="btn btn-primary"
-                                      [routerLink]="['expired']"
-                                      routerLinkActive="active-link">About to get expired</button>
+                                      >About to get expired</button>
                     </div> -->
-          </div>
+        </div>
 </div>
 
 <div class="btn-pos">
-          <button type="button"
-                  class="btn btn-primary"
-                  style="position: absolute; top: 5%;left: 5%;"
-                  (click)="backClicked()">Back</button>
+        <button type="button"
+                class="btn btn-primary"
+                style="position: absolute; top: 5%;left: 5%;"
+                (click)="backClicked()">Back</button>
 </div>
 
 <div class="btn-pos">
-          <button type="button"
-                  class="btn btn-primary"
-                  style="position: absolute; top: 5%;right:5%;">Loguot</button>
+        <button type="button"
+                class="btn btn-primary"
+                style="position: absolute; top: 5%;right:5%;"
+                (click) = 'onClickLoguot()'>Loguot</button>
 </div>

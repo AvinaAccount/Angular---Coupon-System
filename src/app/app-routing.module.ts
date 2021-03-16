@@ -39,6 +39,7 @@ const routes: Routes = [
       
       /* Company */
       { path: 'company/company-main', component: CompanyComponent },
+      { path: 'company/company-main/loguot', component: UsersComponent },
       { path: 'company/company-main/company-coupons', component: CompanyCouponsComponent },
       { path: 'company/company-main/company-coupons/:id', component: CompanyCouponsPageComponent },
       { path: 'company/company-main/new-coupon', component: NewCouponComponent },

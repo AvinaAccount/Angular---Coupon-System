@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Coupon } from 'src/app/models/coupon.model';
 import { CompanyService } from '../company.service';
 
 @Component({
@@ -10,13 +11,31 @@ import { CompanyService } from '../company.service';
 })
 export class NewCouponComponent implements OnInit {
   @ViewChild('f') couponForm: NgForm
-  constructor() { }
+  coupon: Coupon = {
+    id: 0,
+    amount: 0,
+    title: '',
+    startDate: '',
+    endDate: '',
+    category: 0,
+    price: 0,
+    imageURL: '',
+  }
+
+  returnCoupon: Coupon
+
+
+  constructor(private companyService: CompanyService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    console.log(this.couponForm);
+   this.companyService.createCoupon(this.coupon)
+  }
+
+  printCoupon() {
+    console.log(this.coupon);
 
   }
 

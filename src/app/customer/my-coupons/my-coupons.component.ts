@@ -16,7 +16,8 @@ export class MyCouponsComponent implements OnInit {
   constructor(private customerService: CustomerService, private location: Location) { }
 
   ngOnInit(): void {
-    this.coupons = this.customerService.getCoupons()
+    this.customerService.getCustomerCoupons()
+    this.customerService.couponsEmiter.subscribe(coupons => this.coupons = coupons)
   }
 
   backClicked() {
