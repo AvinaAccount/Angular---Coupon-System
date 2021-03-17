@@ -96,6 +96,8 @@ export class StorageService {
     return this.http.post<Coupon>('http://localhost:8080/api/customers/purchase_coupon', params)
   }
 
+  
+
   /* Global function */
   /* This Global function serves the site in general 
   (Includes users who are not registered with the system)

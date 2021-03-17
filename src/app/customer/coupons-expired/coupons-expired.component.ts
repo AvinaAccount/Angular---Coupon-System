@@ -12,12 +12,39 @@ import { Coupon } from 'src/app/models/coupon.model';
 export class CouponsExpiredComponent implements OnInit {
 
   coupons: Coupon[]
+  getToBeExpired: Coupon[] = []
 
 
-  constructor(private couponService: CustomerService, private location: Location) { }
+  constructor(private customerService: CustomerService, private location: Location) {
+  }
 
   ngOnInit(): void {
-    this.coupons = this.couponService.getCoupons()
+    this.customerService.getCustomerCoupons()
+    this.customerService.couponsEmiter.subscribe((coupons: Coupon[]) => {
+      this.coupons = coupons
+      this.expiresInAweek()
+    })
+  }
+
+  expiresInAweek() {
+    for (let i = 0; i < this.coupons.length - 1; i++) {
+
+      let endDate = new Date(this.coupons[i].endDate)
+      let inAWeek = new Date()
+      inAWeek.setDate(inAWeek.getDate())
+
+      let time = endDate.getTime() - inAWeek.getTime()
+      let days = time / (1000 * 3600 * 24)
+      days = Math.floor(days)
+
+      console.log(days)
+
+      if (days <= 7) {
+        this.getToBeExpired.push(this.coupons[i])
+      }
+    }
+
+    this.coupons = this.getToBeExpired
   }
 
   backClicked() {

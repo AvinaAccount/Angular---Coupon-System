@@ -50,7 +50,7 @@ export class ShopCouponPageComponent implements OnInit {
 
   onClickPurchase() {
     this.customerService.purchaseCoupon(this.selectedCoupon)
-    this.customerService.couponEmiter.subscribe(coupon => this.coupon = coupon)
+    this.customerService.couponEmiter.subscribe((coupon: Coupon) => this.coupon = coupon)
     this.location.back()
   }
 

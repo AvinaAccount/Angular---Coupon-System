@@ -1,5 +1,3 @@
-import { ActivatedRoute, Params } from '@angular/router';
-import { StorageService } from './../../common/storage.service';
 import { Coupon } from 'src/app/models/coupon.model';
 import { Location } from '@angular/common';
 import { CompanyService } from './../company.service';
@@ -23,8 +21,6 @@ export class CompanyCouponsComponent implements OnInit {
   constructor(
     private companyService: CompanyService,
     private location: Location,
-    private storageService: StorageService,
-    private route: ActivatedRoute
   ) {
   }
 
@@ -32,16 +28,19 @@ export class CompanyCouponsComponent implements OnInit {
     this.companyService.fetchCompanyCoupons()
     this.companyService.couponsList.subscribe((coupons: Coupon[]) => {
       this.coupons = coupons
-      this.sortCoupons(coupons)
+      this.sortCouponsBySele(coupons)
     })
   }
 
-  sortCoupons(coupons: Coupon[]) {
+  /*Default  sort*/
+  sortCouponsBySele(coupons: Coupon[]) {
     coupons.sort((couponA: Coupon, couponB: Coupon) => {
       if (couponA.amount < couponB.amount) return -1
-            
-    }
-    )
+    })
+  }
+
+  sortCouponsByTitle() {
+    this.coupons.sort((a, b) => a.title.localeCompare(b.title))
   }
 
   backClicked() {

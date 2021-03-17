@@ -2,6 +2,16 @@
         class="fixed-top btn btn-outline-info"
         (click)="backClicked()">Back</button>
 
+<br><br>
+        <button type="button"
+        class=""
+        (click) = 'sortCouponsByTitle()'>Sort By Title</button>
+        
+        <br><br>
+        <button type="button"
+        class=""
+        (click) = 'sortCouponsByTitle()'>Sort By Title</button>
+
 <div class="container">
         <div class="row">
                 <app-company-coupons-item *ngFor="let c of coupons; let i = index"
