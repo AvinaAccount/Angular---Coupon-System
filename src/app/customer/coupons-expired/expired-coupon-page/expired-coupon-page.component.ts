@@ -21,9 +21,11 @@ export class ExpiredCouponPageComponent implements OnInit {
     category: 0,
     price: 0,
     imageURL: '',
+    description: ''
   }
   coupons: Coupon[]
   @Input() selectedCoupon: number
+  errorMessage: string;
 
   constructor(
     private location: Location,
@@ -32,12 +34,14 @@ export class ExpiredCouponPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => { this.selectedCoupon = +params['id'] })
+    
     this.customerService.getCustomerCoupons()
     this.customerService.couponsEmiter.subscribe((coupons: Coupon[]) => {
       this.coupons = coupons
       this.getSelectedCoupon()
     })
 
+    this.customerService.errorChannel.subscribe(errorMessage => { this.errorMessage = errorMessage })
   }
 
   getSelectedCoupon() {
@@ -46,13 +50,16 @@ export class ExpiredCouponPageComponent implements OnInit {
         this.coupon = this.coupons[i]
         break
       }
-
     }
   }
-
 
   backClicked() {
     this.location.back()
   }
 
+
+  closeErrorMessage() {
+    this.backClicked()
+    this.errorMessage = ''
+  }
 }

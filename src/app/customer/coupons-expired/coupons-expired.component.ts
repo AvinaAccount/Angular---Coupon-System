@@ -13,10 +13,11 @@ export class CouponsExpiredComponent implements OnInit {
 
   coupons: Coupon[]
   getToBeExpired: Coupon[] = []
+  errorMessage: string;
 
 
-  constructor(private customerService: CustomerService, private location: Location) {
-  }
+  constructor(private customerService: CustomerService, private location: Location) {}
+
 
   ngOnInit(): void {
     this.customerService.getCustomerCoupons()
@@ -24,7 +25,9 @@ export class CouponsExpiredComponent implements OnInit {
       this.coupons = coupons
       this.expiresInAweek()
     })
+    this.customerService.errorChannel.subscribe(errorMessage => this.errorMessage = errorMessage)
   }
+
 
   expiresInAweek() {
     for (let i = 0; i < this.coupons.length - 1; i++) {
@@ -34,7 +37,7 @@ export class CouponsExpiredComponent implements OnInit {
       inAWeek.setDate(inAWeek.getDate())
 
       let time = endDate.getTime() - inAWeek.getTime()
-      let days = time / (1000 * 3600 * 24)
+      let days = (time / (1000 * 3600 * 24)) - 1
       days = Math.floor(days)
 
       console.log(days)
@@ -47,8 +50,15 @@ export class CouponsExpiredComponent implements OnInit {
     this.coupons = this.getToBeExpired
   }
 
+
   backClicked() {
     this.location.back()
+  }
+
+
+  closeErrorMessage() {
+    this.backClicked()
+    this.errorMessage = ''
   }
 
 }

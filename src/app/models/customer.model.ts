@@ -6,7 +6,6 @@ export class Customer {
           password: string
 
 
-
           constructor(
                     id: number,
                     firstName: string,
@@ -19,7 +18,5 @@ export class Customer {
                     this.lastName = lastName
                     this.email = email
                     this.password = password
-
-
           }
 }

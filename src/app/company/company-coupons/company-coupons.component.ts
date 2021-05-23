@@ -10,26 +10,36 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   providers: [CompanyService]
 })
 export class CompanyCouponsComponent implements OnInit {
-  /* Add  explanation*/
+ 
   coupons: Coupon[]
-  coupon: Coupon
+  coupon: Coupon = {
+    id: 0,
+    amount: 0,
+    title: '',
+    startDate: '',
+    endDate: '',
+    category: 0,
+    price: 0,
+    imageURL: '',
+    description:''
+  }
+
   @Output() couponIdEmiter = new EventEmitter<Coupon>()
   selectedCoupon: string;
-
-
+  errorMessage: string;
 
   constructor(
     private companyService: CompanyService,
-    private location: Location,
-  ) {
-  }
+    private location: Location) {}
 
-  ngOnInit(): void {
+  
+    ngOnInit(): void {
     this.companyService.fetchCompanyCoupons()
     this.companyService.couponsList.subscribe((coupons: Coupon[]) => {
       this.coupons = coupons
       this.sortCouponsBySele(coupons)
     })
+    this.companyService.errorChannel.subscribe(errorMessage => this.errorMessage = errorMessage)
   }
 
   /*Default  sort*/
@@ -39,12 +49,30 @@ export class CompanyCouponsComponent implements OnInit {
     })
   }
 
+
   sortCouponsByTitle() {
     this.coupons.sort((a, b) => a.title.localeCompare(b.title))
   }
 
+
+  sortCouponsByStartDate() {
+    this.coupons.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())
+  }
+
+
+  sortCouponsByEndDate() {
+    this.coupons.sort((a, b) => new Date(a.endDate).getTime() - new Date(b.endDate).getTime())
+  }
+
+
   backClicked() {
     this.location.back()
+  }
+
+  
+  closeErrorMessage() {
+    this.backClicked()
+    this.errorMessage = ''
   }
 
 }

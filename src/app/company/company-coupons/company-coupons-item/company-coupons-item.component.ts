@@ -16,10 +16,8 @@ export class CompanyCouponsItemComponent implements OnInit {
 
   constructor(private companyService: CompanyService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  
 }
 
 

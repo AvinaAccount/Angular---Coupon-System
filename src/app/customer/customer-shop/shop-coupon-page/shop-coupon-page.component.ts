@@ -11,6 +11,7 @@ import { CustomerService } from '../../customer.service';
 })
 export class ShopCouponPageComponent implements OnInit {
 
+  coupons: Coupon[]
   coupon: Coupon = {
     id: 0,
     amount: 0,
@@ -20,14 +21,16 @@ export class ShopCouponPageComponent implements OnInit {
     category: 0,
     price: 0,
     imageURL: '',
+    description: ''
   }
-  coupons: Coupon[]
   @Input() selectedCoupon: number
+  errorMessage: string;
 
   constructor(
     private location: Location,
     private customerService: CustomerService,
     private route: ActivatedRoute) { }
+
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => { this.selectedCoupon = +params['id'] })
@@ -36,25 +39,34 @@ export class ShopCouponPageComponent implements OnInit {
       this.coupons = coupons
       this.onSelectCoupon(this.selectedCoupon)
     })
+
+    this.customerService.errorChannel.subscribe(errorMessage => { this.errorMessage = errorMessage })
   }
 
+
   onSelectCoupon(id: number) {
-    for (let i = 0; i < this.coupons.length - 1; i++) {
+    for (let i = 0; i < this.coupons.length; i++) {
       if (this.coupons[i].id === id) {
         this.coupon = this.coupons[i]
-        break
       }
     }
     console.log(this.coupon);
   }
 
+
   onClickPurchase() {
     this.customerService.purchaseCoupon(this.selectedCoupon)
     this.customerService.couponEmiter.subscribe((coupon: Coupon) => this.coupon = coupon)
-    this.location.back()
   }
+
 
   backClicked() {
     this.location.back()
+  }
+
+
+  closeErrorMessage() {
+    this.backClicked()
+    this.errorMessage = ''
   }
 }

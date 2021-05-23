@@ -1,4 +1,3 @@
-
 export class Coupon {
 
           amount: number
@@ -9,6 +8,7 @@ export class Coupon {
           price: number
           startDate: string
           title: string
+          description:string
 
 
           constructor(
@@ -20,6 +20,7 @@ export class Coupon {
                     amount: number,
                     price: number,
                     imageURL: string,
+                    description:string
           ) {
                     this.id = id
                     this.title = title
@@ -29,5 +30,6 @@ export class Coupon {
                     this.amount = amount
                     this.price = price
                     this.imageURL = imageURL
+                    this.description = description
           }
 }

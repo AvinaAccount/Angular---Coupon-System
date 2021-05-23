@@ -13,8 +13,6 @@ export class CouponItemComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  
-  }
+  ngOnInit(): void {}
 
 }

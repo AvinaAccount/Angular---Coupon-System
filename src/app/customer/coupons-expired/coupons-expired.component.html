@@ -1,12 +1,39 @@
 <button type="button"
-        class="fixed-top btn btn-outline-info"
+        class="btn"
+        style="position: absolute; top: 5%;left: 5%;"
         (click)="backClicked()">Back</button>
 
 <div class="container">
-          <div class="row">
-                    <app-customer-expired-coupon-item *ngFor="let c of coupons; let i = index"
-                                             [coupon]=c
-                                             [id]=c.id
-                                             style="padding: 20px;"></app-customer-expired-coupon-item>
-          </div>
+        <div class="row">
+                <app-customer-expired-coupon-item *ngFor="let c of coupons; let i = index"
+                                                  [coupon]=c
+                                                  [id]=c.id
+                                                  style="padding: 20px;"></app-customer-expired-coupon-item>
+        </div>
+</div>
+
+
+<!-- Error MEssage -->
+
+<div *ngIf="errorMessage"
+     id="container"
+     style="position: absolute; top: 5%;left: 30%;">
+        <div id="error-box">
+                <div class="dot"></div>
+                <div class="dot two"></div>
+                <div class="face2">
+                        <div class="eye"></div>
+                        <div class="eye right"></div>
+                        <div class="mouth sad"></div>
+                </div>
+                <div class="shadow move"></div>
+                <div class="message">
+                        <br>
+                        <p>{{errorMessage}}
+                </div>
+                <button class="button-box">
+                        <h1 class="red"
+                            (click)=closeErrorMessage()>Close</h1>
+                </button>
+        </div>
 </div>

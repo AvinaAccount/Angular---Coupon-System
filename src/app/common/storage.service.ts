@@ -3,15 +3,19 @@ import { Coupon } from './../models/coupon.model';
 import { Token } from './../models/token.model';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Company } from '../models/company.model';
 
 @Injectable()
 export class StorageService {
+
   token: string
   coupon: Coupon
+  errorChannel = new Subject<string>()
+
 
   constructor(private http: HttpClient) { }
+
 
   getToken(email: string, password: string, type: string) {
     let params = new HttpParams()
@@ -19,9 +23,12 @@ export class StorageService {
       .set('password', password)
       .set('type', type)
     const token = this.http.post<Token>('http://localhost:8080/api/login', params)
-    token.subscribe(token => { this.token = token.token.toString() })
+    token.subscribe(token => {
+      this.token = token.token.toString()
+    }, error => {
+      alert('Incorrect login email or password.')
+    })
     return token
-
   }
 
   /* Company Functions */
@@ -96,7 +103,11 @@ export class StorageService {
     return this.http.post<Coupon>('http://localhost:8080/api/customers/purchase_coupon', params)
   }
 
-  
+  updateCompanyDetails(company: Company) {
+    const params = new HttpParams()
+      .set('token', this.token)
+    return this.http.post<Company>('http://localhost:8080/api/company/update', company, { params })
+  }
 
   /* Global function */
   /* This Global function serves the site in general 

@@ -11,16 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyCouponsComponent implements OnInit {
   coupons: Coupon[]
+  errorMessage: string;
 
 
   constructor(private customerService: CustomerService, private location: Location) { }
 
+
   ngOnInit(): void {
     this.customerService.getCustomerCoupons()
-    this.customerService.couponsEmiter.subscribe(coupons => this.coupons = coupons)
+    this.customerService.couponsEmiter.subscribe((coupons: Coupon[]) => this.coupons = coupons)
+
+    this.customerService.errorChannel.subscribe(errorMessage => {
+      this.errorMessage = errorMessage
+    })
   }
+
 
   backClicked() {
     this.location.back()
   }
+
+
+  closeErrorMessage() {
+    this.backClicked()
+    this.errorMessage = ''
+  }
+  
 }

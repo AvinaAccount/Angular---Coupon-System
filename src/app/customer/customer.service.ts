@@ -3,6 +3,7 @@ import { StorageService } from './../common/storage.service';
 import { EventEmitter, Injectable } from '@angular/core';
 
 import { Coupon } from '../models/coupon.model';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class CustomerService {
@@ -11,15 +12,18 @@ export class CustomerService {
   couponEmiter = new EventEmitter<Coupon>()
   customerEmiter = new EventEmitter<Customer>()
   messageEmiter = new EventEmitter<string>()
-
+  errorChannel = new Subject<string>()
 
   constructor(private storageService: StorageService) {
+    /* Empty */
   }
 
   getCustomerCoupons() {
     this.storageService.fetchCustomerCoupons().subscribe(coupons => {
       this.coupons = coupons
       this.couponsEmiter.emit(this.getCoupons())
+    }, error => {
+      this.errorChannel.next('You dont have coupons to redeem, go to the coupon store and purchase new coupons, TRY LOGIN AGAIN')
     })
   }
 
@@ -29,27 +33,40 @@ export class CustomerService {
 
 
   removeCustomerCoupon(couponId: number) {
-    this.storageService.deleteCustomerCoupon(couponId).subscribe(msg => this.messageEmiter.emit(msg))
+    this.storageService.deleteCustomerCoupon(couponId).subscribe(msg => {
+      this.messageEmiter.emit(msg)
+    }, error => {
+      this.errorChannel.next('Your coupon was deleted, GO buy another coupons!')
+    })
   }
 
 
   getCustomerDetails() {
     this.storageService.fetchCustomerDetails().subscribe(customer => {
-      this.customerEmiter.emit(customer)
+      this.customerEmiter.emit(customer)      
+    }, error => {
+      this.errorChannel.next('There was a problem get your user details, contact us and be sure the problem will soon be over! TRY LOGIN AGAIN')
     })
   }
+
 
   updateCustomerDetails(customer: Customer) {
     this.storageService.updateCustomerDetails(customer).subscribe(customer => {
       this.customerEmiter.emit(customer)
-    })
+    }, error => this.errorChannel.next('There was a problem update your user details, contact us and be sure the problem will soon be over! TRY LOGIN AGAIN'))
   }
+
 
   purchaseCoupon(couponId: number) {
-    this.storageService.purchaseCoupon(couponId).subscribe(coupon => { this.couponEmiter.emit(coupon) })
+    this.storageService.purchaseCoupon(couponId).subscribe(coupon => {
+      this.couponEmiter.emit(coupon)
+    }, error => this.errorChannel.next('There was a problem purchase this coupon, contact us and be sure the problem will soon be over! TRY LOGIN AGAIN'))
   }
 
 
+  logout() {
+    this.storageService.token = null
+  }
 
 
   /**
@@ -61,7 +78,10 @@ export class CustomerService {
      */
 
   getAllCoupons() {
-    this.storageService.fetchAllCoupons().subscribe(coupons => this.couponsEmiter.emit(coupons))
+    this.storageService.fetchAllCoupons().subscribe(coupons => {
+      this.coupons = coupons
+      this.couponsEmiter.emit(this.getCoupons())
+    }, error => this.errorChannel.next('There was a problem purchase this coupon, contact us and be sure the problem will soon be over! TRY LOGIN AGAIN'))
   }
 
 }

@@ -14,10 +14,12 @@ export class CompanyProfileComponent implements OnInit {
     id: 0,
     name: '',
     email: '',
-    password: ''
+    password: '',
+    logoURL: ''
   }
   editMode = false
   @ViewChild('f') companyForm: NgForm
+  errorMessage: string;
 
   constructor(private location: Location, private companyService: CompanyService) { }
 
@@ -27,19 +29,29 @@ export class CompanyProfileComponent implements OnInit {
       (company: Company) => {
         this.company = company
       })
+
+    this.companyService.errorChannel.subscribe(errorMessage => this.errorMessage = errorMessage)
   }
 
 
   editClicked() {
     this.editMode = true
   }
-  onClick() {
+  onClickDone() {
     this.editMode = false
+    this.companyService.updateDetails(this.company)
+    this.companyService.companyEmiter.subscribe(company => this.company = company)
     console.log(this.company);
   }
 
   backClicked() {
     this.location.back()
+  }
+
+
+  closeErrorMessage() {
+    this.backClicked()
+    this.errorMessage = ''
   }
 
 }

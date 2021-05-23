@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { CompanyService } from './../../company/company.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,10 +12,10 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private location: Location) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSelectUser(type: string) {
     if (type === 'admin') {
@@ -26,4 +27,8 @@ export class UsersComponent implements OnInit {
     }
   }
 
+  backClicked() {
+    this.location.back()
+  }
+  
 }

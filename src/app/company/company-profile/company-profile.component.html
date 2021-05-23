@@ -1,17 +1,18 @@
 <button type="button"
-        class="fixed-top btn btn-outline-info"
+        class="btn"
+        style="position: absolute; top: 5%;left: 5%;"
         (click)="backClicked()">Back</button>
 
-<br><br>
 <button type="button"
-        class=" btn btn-primary"
+        class=" btn"
+        style="position: absolute; top: 15%;left: 5%;"
         (click)="editClicked()">Edit</button>
-<div class="container"
-     *ngIf=editMode>
-        <form (ngSubmit)='onClick()'
+<div class="container">
+        <form (ngSubmit)='onClickDone()'
               #f='ngForm'>
                 <div class="row">
-                        <div class="col-12">
+                        <div class="col-6"
+                             *ngIf=editMode>
                                 <div class="form-group">
                                         <label for="name">Name :</label>
                                         <input type="text"
@@ -34,23 +35,63 @@
                                                name="password">
                                 </div>
 
-                        </div>
-                        <br>
-                        <div class="row">
-                                <div class="col-2">
-                                        <button class="btn btn-primary"
-                                                type="submit">Done</button>
-                                </div>
-                                <div class="col-2">
-                                        <button class="btn btn-secondary"
-                                                type="button">Clear</button>
-                                </div>
-                                <div class="col-2">
-                                        <button class="btn btn-danger"
-                                                type="button">Cancel</button>
+                                <div class="row">
+                                        <div class="col-2">
+                                                <button class="btn btn-primary"
+                                                        type="submit">Done</button>
+                                        </div>
+                                        <div class="col-2">
+                                                <button class="btn btn-secondary"
+                                                        type="button">Clear</button>
+                                        </div>
+                                        <div class="col-2">
+                                                <button class="btn btn-danger"
+                                                        type="button">Cancel</button>
+                                        </div>
                                 </div>
                         </div>
                 </div>
-
         </form>
+</div>
+
+<!--  Details display  -->
+
+<div class="profile-card-4 text-center">
+        <img src={{company.logoURL}}
+             class="img img-responsive">
+        <div class="profile-content">
+                <div class="profile-name">
+                </div>
+                <div class="profile-description">TextTextTextTextTextText</div>
+                <div class="profile-overview">
+                        <p>{{company.name}}</p>
+                        <p> {{company.email}}</p>
+                        <p>{{company.password}}</p>
+                </div>
+        </div>
+</div>
+
+<!-- Error Message -->
+
+<div *ngIf="errorMessage"
+     id="container"
+     style="position: absolute; top: 5%;left: 30%;">
+        <div id="error-box">
+                <div class="dot"></div>
+                <div class="dot two"></div>
+                <div class="face2">
+                        <div class="eye"></div>
+                        <div class="eye right"></div>
+                        <div class="mouth sad"></div>
+                </div>
+                <div class="shadow move"></div>
+                <div class="message">
+                        <br>
+                        <p>{{errorMessage}}
+                </div>
+                <button class="button-box">
+                        <h1 class="red"
+                            (click)=closeErrorMessage()>Close</h1>
+                </button>
+        </div>
 </div>

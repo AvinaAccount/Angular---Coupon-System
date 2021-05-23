@@ -1,3 +1,4 @@
+import { CompanyService } from 'src/app/company/company.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,24 +10,28 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CompanyComponent implements OnInit {
 
+
   constructor(
     private location: Location,
     private route: ActivatedRoute,
     private router: Router,
-    ) { }
+    private companyService: CompanyService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+
 
   backClicked() {
     this.location.back()
   }
 
+
   onClickMyCoupons() {
     this.router.navigate(['company-coupons'], { relativeTo: this.route })
   }
 
-  onClickLoguot(){
+
+  onClickLoguot() {
+    this.companyService.logout()
     this.router.navigate(['login'])
   }
 }

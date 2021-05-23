@@ -1,7 +1,14 @@
+<br><br>
+<button type="button"
+        class="btn"
+        style="position: relative;left: 5%;"
+        (click)="backClicked()">Back</button>
+
 <div class="wrapper fadeInDown">
        <div id="formContent">
               <!-- Login Form -->
-              <form (ngSubmit) = 'onSubmit()' #f = 'ngForm'>
+              <form (ngSubmit)='onSubmit()'
+                    #f='ngForm'>
                      <input type="text"
                             id="email"
                             ngModel
@@ -16,13 +23,8 @@
                             placeholder="password">
                      <br><br>
                      <button type="submit"
-                             class="btn btn-primary"
-                             >Login</button>
+                             class="btn btn-primary">Login</button>
                      <br><br>
               </form>
        </div>
-
-       <button type="button"
-               class="fixed-top btn btn-outline-info"
-               (click)="backClicked()">Back</button>
 </div>

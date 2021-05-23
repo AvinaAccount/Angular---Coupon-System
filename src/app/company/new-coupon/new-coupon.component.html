@@ -1,82 +1,135 @@
+<button type="button"
+        class="btn btn-primary"
+        style="position: absolute; top: 5%;left: 5%;"
+        (click)="backClicked()">Back</button>
+
 <div class="container">
        <form (ngSubmit)='onSubmit()'
              #f="ngForm">
               <div class="row">
                      <div class="col-12">
-                            <div class="form-group">
+                            <div class="group">
                                    <label for="title">Title</label>
                                    <input type="text"
                                           id="title"
-                                          [(ngModel)] = coupon.title
+                                          [(ngModel)]=coupon.title
                                           name="title"
                                           required
                                           minlength="4"
                                           maxlength="15">
+                                   <span class="highlight"></span><span class="bar"></span>
                             </div>
-
-                            <div class="form-group">
+                            <div class="group">
                                    <label for="endDate">End Date</label>
+                                   <br>
                                    <input type="date"
                                           id="endDate"
-                                          [(ngModel)] = coupon.endDate
+                                          [(ngModel)]=coupon.endDate
                                           name="endDate"
                                           required>
+                                   <span class="highlight"></span><span class="bar"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="group">
                                    <label for="startDate">Start Date</label>
+                                   <br>
                                    <input type="date"
                                           id="startDate"
-                                          [(ngModel)]= coupon.startDate
+                                          [(ngModel)]=coupon.startDate
                                           name="startDate"
                                           required>
+                                   <span class="highlight"></span><span class="bar"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="group">
                                    <label for="price">Price</label>
+                                   <br>
                                    <input type="number"
                                           id="price"
-                                          [(ngModel)]= coupon.price
+                                          [(ngModel)]=coupon.price
                                           name="price"
                                           required>
+                                   <span class="highlight"></span><span class="bar"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="group">
                                    <label for="amount">Amount</label>
+                                   <br>
                                    <input type="number"
                                           id="amount"
-                                          [(ngModel)]= coupon.amount
+                                          [(ngModel)]=coupon.amount
                                           name="amount"
                                           required>
+                                   <span class="highlight"></span><span class="bar"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="group">
                                    <label for="category">Category</label>
+                                   <br>
                                    <input type="number"
                                           id="category"
-                                          [(ngModel)] =coupon.category
+                                          [(ngModel)]=coupon.category
                                           name="category"
                                           required>
+                                   <span class="highlight"></span><span class="bar"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="group">
                                    <label for="imageURL">imageURL</label>
+                                   <br>
                                    <input type="text"
                                           id="imageURL"
-                                          [(ngModel)] = coupon.imageURL
+                                          [(ngModel)]=coupon.imageURL
                                           name="imageURL"
                                           required>
+                                   <span class="highlight"></span><span class="bar"></span>
+                            </div>
+                            <div class="group">
+                                   <label for="description">Description</label>
+                                   <br>
+                                   <input type="text"
+                                          id="description"
+                                          [(ngModel)]=coupon.description
+                                          name="description"
+                                          required>
+                                   <span class="highlight"></span><span class="bar"></span>
                             </div>
                      </div>
               </div>
-              <div class="row">
-                     <div class="col-2">
+
+              <div class="row ">
+                     <div class="col-4">
                             <button class="btn btn-primary"
                                     type="submit">Done</button>
                      </div>
-                     <div class="col-2">
+                     <div class="col-4">
                             <button class="btn btn-secondary"
                                     type="button">Clear</button>
                      </div>
-                     <div class="col-2">
+                     <div class="col-4">
                             <button class="btn btn-danger"
                                     type="button">Cancel</button>
                      </div>
               </div>
        </form>
+</div>
+
+<!-- Error Message -->
+
+<div *ngIf="errorMessage"
+     id="container"
+     style="position: absolute; top: 5%;left: 30%;">
+       <div id="error-box">
+              <div class="dot"></div>
+              <div class="dot two"></div>
+              <div class="face2">
+                     <div class="eye"></div>
+                     <div class="eye right"></div>
+                     <div class="mouth sad"></div>
+              </div>
+              <div class="shadow move"></div>
+              <div class="message">
+                     <br>
+                     <p>{{errorMessage}}
+              </div>
+              <button class="button-box">
+                     <h1 class="red"
+                         (click)=closeErrorMessage()>Close</h1>
+              </button>
+       </div>
 </div>

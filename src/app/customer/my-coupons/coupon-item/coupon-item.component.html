@@ -1,14 +1,20 @@
-<div class="card"
-     style="width: 18rem;"
+<div class="profile-card-4 text-center"
      [routerLink]=[id]
      routerLinkActive="active">
      <img src={{coupon.imageURL}}
-          class="card-img-top"
-          style="padding-top: 20px;"
-          alt="...">
-     <div class="card-body">
-          <h5 class="card-title">{{coupon.title}}</h5>
-          <p class="card-text">{{coupon.amount}}</p>
-          <p class="card-text">{{coupon.category}}</p>
+          class="img img-responsive">
+     <div class="profile-content">
+          <div class="profile-name">{{coupon.title}}
+
+          </div>
+          <div class="profile-description">{{coupon.description}}</div>
+          <div class="row">
+               <div class="col-xs-4">
+                    <div class="profile-overview">
+                         <p> Start Date : {{coupon.startDate}}</p>
+                         <p>End Date : {{coupon.endDate}}</p>
+                    </div>
+               </div>
+          </div>
      </div>
 </div>
